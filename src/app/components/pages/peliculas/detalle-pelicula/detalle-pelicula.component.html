@@ -1,0 +1,7 @@
+<ng-container *ngIf="pelicula">
+    <h1><spam>nombre:</spam> {{pelicula.nombre}}</h1>
+    <p><spam>tipo:</spam> {{pelicula.tipo}}</p>
+    <p><spam>fecha de estreno:</spam> {{pelicula.fecha_de_estreno}}</p>
+    <p><spam>cantidad de publico:</spam> {{pelicula.cantidad_de_publico}}</p>
+    <img [src]="pelicula.foto_de_la_pelicula" [alt]="pelicula.nombre">
+</ng-container>

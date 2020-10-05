@@ -1,0 +1,32 @@
+<table mat-table [dataSource]="peliculas" class="mat-elevation-z8" *ngIf="peliculas" >
+
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef > Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+    <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef > Tipo </th>
+        <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="fecha_de_estreno">
+        <th mat-header-cell *matHeaderCellDef > Fecha de estreno </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha_de_estreno}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cantidad_de_publico">
+        <th mat-header-cell *matHeaderCellDef > Cantidad de publico </th>
+        <td mat-cell *matCellDef="let element"> {{element.cantidad_de_publico}} </td>
+    </ng-container>
+    <ng-container matColumnDef="foto_de_la_película">
+        <th mat-header-cell *matHeaderCellDef > Foto de la película </th>
+        <td mat-cell *matCellDef="let element"> <img [src]="element.foto_de_la_pelicula" [alt]="element.nombre"> </td>
+    </ng-container>
+    <ng-container matColumnDef="Acción">
+        <th mat-header-cell *matHeaderCellDef > Acción </th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-raised-button  (click)="onSelect(element)">Seleccionar</button> 
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
