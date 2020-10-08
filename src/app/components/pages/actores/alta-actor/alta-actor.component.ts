@@ -44,10 +44,10 @@ export class AltaActorComponent implements OnInit {
     invalidsexo: boolean = false
     invalidfecha_de_nacimiento: boolean = false
     invalidfoto: boolean = false
-    // invalidpais: boolean = false
+    invalidpais: boolean = false
 
 
-    private validateNewMovie(): boolean {
+    private validateNewActor(): boolean {
         if (this.nombre == '' || this.nombre == undefined) {
             this.invalidnombre = true
             return false
@@ -71,7 +71,7 @@ export class AltaActorComponent implements OnInit {
         return true
     }
     public onAceptar() {
-        if (this.validateNewMovie()) {
+        if (this.validateNewActor()) {
             let newActor: Actor = {
                 nombre: this.nombre,
                 apellido: this.apellido,

@@ -1,1 +1,44 @@
-<p>detalle-actor works!</p>
+<ng-container *ngIf="actor">
+
+
+    <h3>Actor seleccionado</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <mat-form-field class="custom-input" [class.is-invalid]="invalidnombre">
+                <mat-label>nombre</mat-label>
+                <input matInput placeholder="Ingrese el dato" [(ngModel)]="actor.nombre" [value]="actor.nombre">
+            </mat-form-field>
+            <mat-form-field class="custom-input" [class.is-invalid]="invalidapellido">
+                <mat-label>apellido</mat-label>
+                <input matInput placeholder="Ingrese el dato" [(ngModel)]="actor.apellido" [value]="actor.apellido">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="custom-input" [class.is-invalid]="invalidsexo">
+                <mat-label>sexo</mat-label>
+                <select matNativeControl [(ngModel)]="actor.sexo" class="form-control" [value]="actor.sexo" required>
+                    <option value="hombre">hombre</option>
+                    <option value="mujer">mujer</option>
+                </select>
+            </mat-form-field>
+            <mat-form-field class="custom-input" [class.is-invalid]="invalidfecha_de_nacimiento">
+                <mat-label>fecha de nacimiento</mat-label>
+                <input matInput placeholder="Ingrese el dato" [(ngModel)]="actor.fecha_de_nacimiento" [value]="actor.fecha_de_nacimiento">
+            </mat-form-field>
+
+            <mat-form-field class="custom-input" [class.is-invalid]="invalidfoto">
+                <mat-label>foto URL</mat-label>
+                <input matInput placeholder="Ingrese el dato" [(ngModel)]="actor.foto" [value]="actor.foto" disabled>
+            </mat-form-field>
+            <mat-form-field class="custom-input" [class.is-invalid]="invalidpais">
+                <mat-label>pais</mat-label>
+                <input matInput [(ngModel)]="actor.pais" [value]="actor.pais" disabled>
+            </mat-form-field>
+
+            <!-- <button mat-raised-button (click)="onDelete()"> <i class="fas fa-chevron-left"></i>Borrar</button>
+            <button mat-raised-button color="primary" (click)="onUpdate()"> <i class="fas fa-chevron-left"></i>Actualizar</button> -->
+        </div>
+        <div class="col-md-4">
+            <p1-table [objList]="paises" (selection)="onPaisSelection($event)"></p1-table>
+        </div>
+    </div>
+
+</ng-container>
