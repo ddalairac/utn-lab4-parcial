@@ -8,13 +8,13 @@ import { FbAuthService } from './fb-auth.service';
 export class UrlValidateService {
     constructor(private router: Router,private fbauthservice: FbAuthService) { }
     canActivate(state: RouterStateSnapshot): boolean {
+        // return this.checkRoute(this.router.url);
         // return this.checkRoute(state.url);
         return true;
     }
     private checkRoute(path){
-        // alert(this.router.url)
-        if (this.router.url === '/authuser') {
-        // if (path === '/authuser') {
+        console.log("checkRoute: ",this.router.url)
+        if (path === '/authuser') {
             return true;
         } else if(this.fbauthservice.getUserCredential()){
             return true;

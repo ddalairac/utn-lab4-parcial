@@ -1,13 +1,12 @@
 export const environment = {
-  production: true,
-  firebaseConfig: {
-      apiKey: "AIzaSyB0dBbPrL5-Tmp_MLbkuXW4oIA8S0I_azw",
-      authDomain: "lab4-tp-gameroom.firebaseapp.com",
-      databaseURL: "https://lab4-tp-gameroom.firebaseio.com",
-      projectId: "lab4-tp-gameroom",
-      storageBucket: "lab4-tp-gameroom.appspot.com",
-      messagingSenderId: "597987734391",
-      appId: "1:597987734391:web:237fc4832dcd3647d4e772",
-      measurementId: "G-WTH5V1D6XV"
-  }
+    production: true,
+    firebaseConfig: {
+        apiKey: "AIzaSyArPKX4BE7_d9ufhXVddRnxLGwqB5BzI6s",
+        authDomain: "lab4parcial-3184a.firebaseapp.com",
+        databaseURL: "https://lab4parcial-3184a.firebaseio.com",
+        projectId: "lab4parcial-3184a",
+        storageBucket: "lab4parcial-3184a.appspot.com",
+        messagingSenderId: "686999968924",
+        appId: "1:686999968924:web:2019ea2ddb5ad06e5ea159"
+    }
 };
