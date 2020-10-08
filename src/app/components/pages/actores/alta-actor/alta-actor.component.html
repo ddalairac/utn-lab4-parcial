@@ -1,1 +1,45 @@
-<p>alta-actor works!</p>
+<h2>Actor Alta</h2>
+
+id?: number;
+nombre: string;
+apellido: string;
+sexo: string;
+fecha_de_nacimiento: string;
+foto: string;
+<div class="row">
+    <div class="col-md-6">
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidnombre">
+            <mat-label>nombre</mat-label>
+            <input matInput placeholder="Ingrese el dato" [(ngModel)]="nombre" [value]="nombre"  >
+        </mat-form-field>
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidapellido">
+            <mat-label>apellido</mat-label>
+            <input matInput placeholder="Ingrese el dato" [(ngModel)]="apellido" [value]="apellido"  >
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="custom-input" [class.is-invalid]="invalidsexo">
+            <mat-label>sexo</mat-label>
+            <select matNativeControl [(ngModel)]="sexo" class="form-control" required  >
+                <option value="hombre">hombre</option>
+                <option value="mujer">mujer</option>
+            </select>
+        </mat-form-field>
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidfecha_de_nacimiento">
+            <mat-label>fecha de nacimiento</mat-label>
+            <input matInput placeholder="Ingrese el dato" [(ngModel)]="fecha_de_nacimiento" [value]="fecha_de_nacimiento"  >
+        </mat-form-field>
+        
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidfoto">
+            <mat-label>foto URL</mat-label>
+            <input matInput placeholder="Ingrese el dato" [(ngModel)]="foto" [value]="foto"  >
+        </mat-form-field>
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidpais">
+            <mat-label>pais</mat-label>
+            <input matInput  [(ngModel)]="pais" [value]="pais" disabled  >
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="onAceptar()"> <i class="fas fa-chevron-left"></i>Aceptar</button>
+    </div>
+    <div class="col-md-6">
+        <p1-table [objList]="paises" (selection)="onPaisSelection($event)"></p1-table>
+    </div>
+</div>

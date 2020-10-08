@@ -15,20 +15,20 @@ export class AppComponent {
             label: "busqueda",
             path: "/busqueda"
         },
+        // {
+        //     label: "alta pelicula ",
+        //     path: "/pelicula/alta"
+        // },
         {
-            label: "alta pelicula ",
-            path: "/pelicula/alta"
-        },
-        {
-            label: "listado peliculas ",
+            label: "peliculas ",
             path: "/pelicula/listado"
         },
+        // {
+        //     label: "alta actor ",
+        //     path: "/actor/alta"
+        // },
         {
-            label: "alta actor ",
-            path: "/actor/alta"
-        },
-        {
-            label: "listado actores",
+            label: "actores",
             path: "/actor/listado"
         }
     ]

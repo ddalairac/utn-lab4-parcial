@@ -1,5 +1,5 @@
 <h2>Peliculas listado</h2>
-<!-- <button mat-raised-button  (click)="onGoBack()"> <i class="fas fa-chevron-left"></i> nuevo</button> -->
+<button mat-raised-button color="primary" (click)="onNew()"> <i class="fas fa-chevron-left"></i> nuevo</button>
 <p1-table [objList]="peliculas" (selection)="onSelection($event)"></p1-table>
 
 <p1-detalle-pelicula [pelicula]="pelicula"></p1-detalle-pelicula>

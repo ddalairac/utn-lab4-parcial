@@ -52,7 +52,7 @@ export class TableComponent implements OnChanges {
     }
     public isImg(dato): boolean {
         if (typeof dato == 'string') {
-            if (dato.includes('.jpg') || dato.includes('.jpeg') || dato.includes('.png') || dato.includes('.gif')) {
+            if (dato.includes('.jpg') || dato.includes('.jpeg') || dato.includes('.png') || dato.includes('.gif') || dato.includes('.svg')) {
                 // console.log("img",dato)
                 return true
             }

@@ -4,11 +4,33 @@ import { eCollections } from '../models/firebase.model';
 import { LoaderService } from './loader.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class FbStorageService {
+    public async get(resource) {
+        // console.log("%crestFetch.get", "color:blue;");
+        this.loader.show();
+        return new Promise((resolve, reject) => {
+            fetch(resource)
+                .then((res) => {
+                    return res.json()
+                })
+                .then((data) => {
+                    // console.log("%cResponse: ", "color:blue", data);
+                    this.loader.hide();
+                    resolve(data)
+                })
+                .catch((err) => {
+                    // console.error("Error get: " + resource, err);
+                    this.loader.hide();
+                    // reject(err);
+                    resolve(null);
+                    // ? MAnejo el error dentro del metodo por eso no retorno el reject()
+                    alert("No se pudieron obtener los datos");
+                })
+        })
+    }
 
-  
     constructor(
         private loader: LoaderService,
         private firestore: AngularFirestore) { }
@@ -28,7 +50,7 @@ export class FbStorageService {
     public async readAll(collection: eCollections): Promise<any> {
         this.loader.show();
         let list = [];
-        return new Promise((resolve,reject)=>{
+        return new Promise((resolve, reject) => {
             this.firestore.collection(collection).get().subscribe(
                 querySnapshot => {
                     querySnapshot.forEach(doc => {
@@ -36,12 +58,12 @@ export class FbStorageService {
                     })
                     // console.log("Listado:", list);
                     this.loader.hide();
-                    resolve( list)
+                    resolve(list)
                 },
                 error => {
                     // console.log("Error Listado:", error, list);
                     this.loader.hide();
-                    reject( error);
+                    reject(error);
                 }
             )
         })
@@ -49,7 +71,7 @@ export class FbStorageService {
     public readOne(collection: eCollections, id: string) {
         this.loader.show();
         return this.firestore.collection(collection).doc(id).get().toPromise()
-            .then((doc)=> {
+            .then((doc) => {
                 this.loader.hide();
                 if (doc.exists) {
                     // console.log("Document data:", doc.data());
@@ -59,7 +81,7 @@ export class FbStorageService {
                     // console.log("No such document!");
                     return false
                 }
-            }).catch((error)=> {
+            }).catch((error) => {
                 this.loader.hide();
             });
     }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { eCollections } from '../../../../models/firebase.model';
 import { Pelicula } from '../../../../models/models';
 import { FbStorageService } from '../../../../services/fb-storage.service';
@@ -11,7 +12,7 @@ import { FbStorageService } from '../../../../services/fb-storage.service';
 export class ListaPeliculaComponent implements OnInit {
 
  
-    constructor(private fbsorageservice: FbStorageService,) { }
+    constructor(private fbstorageservice: FbStorageService, private router: Router) { }
 
     ngOnInit(): void {
         this.getMovies()
@@ -20,7 +21,7 @@ export class ListaPeliculaComponent implements OnInit {
     peliculas: Pelicula[]
     pelicula: Pelicula
     private getMovies() {
-        this.fbsorageservice.readAll(eCollections.peliculas).then(
+        this.fbstorageservice.readAll(eCollections.peliculas).then(
             (data) => {
                 this.peliculas = data
                 // this.pelicula = data[0]
@@ -30,5 +31,8 @@ export class ListaPeliculaComponent implements OnInit {
     }
     public onSelection(pelicula){
         this.pelicula = pelicula;
+    }
+    public onNew(){
+        this.router.navigateByUrl('/pelicula/alta');
     }
 }

@@ -1,1 +1,40 @@
-<p>alta-pelicula works!</p>
+<h2>Peliculas Alta</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidnombre">
+            <mat-label>nombre</mat-label>
+            <input matInput placeholder="Ingrese el dato" [(ngModel)]="nombre" [value]="nombre"  >
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="custom-input" [class.is-invalid]="invalidtipo">
+            <mat-label>tipo</mat-label>
+            <select matNativeControl [(ngModel)]="tipo" class="form-control" required  >
+                <option value="terror">terror</option>
+                <option value="comedia">comedia</option>
+                <option value="amor">amor</option>
+                <option value="otros">otros</option>
+            </select>
+        </mat-form-field>
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidfecha_de_estreno">
+            <mat-label>fecha de estreno</mat-label>
+            <input matInput placeholder="Ingrese el dato" [(ngModel)]="fecha_de_estreno" [value]="fecha_de_estreno"  >
+        </mat-form-field>
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidcantidad_de_publico">
+            <mat-label>cantidad_de_publico</mat-label>
+            <input matInput placeholder="Ingrese el dato" [(ngModel)]="cantidad_de_publico" [value]="cantidad_de_publico"  >
+        </mat-form-field>
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidfoto_de_la_pelicula">
+            <mat-label>foto URL</mat-label>
+            <input matInput placeholder="Ingrese el dato" [(ngModel)]="foto_de_la_pelicula" [value]="foto_de_la_pelicula"  >
+        </mat-form-field>
+        <mat-form-field class="custom-input" [class.is-invalid]="invalidactor">
+            <mat-label>actor</mat-label>
+            <input matInput  [(ngModel)]="actor" [value]="actor" disabled  >
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="onAceptar()"> <i class="fas fa-chevron-left"></i>Aceptar</button>
+    </div>
+    <div class="col-md-4">
+        <p1-table [objList]="actores" (selection)="onActorSelection($event)"></p1-table>
+    </div>
+</div>

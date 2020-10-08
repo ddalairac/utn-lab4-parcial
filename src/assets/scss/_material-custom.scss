@@ -84,3 +84,13 @@
 // .mat-mini-fab.mat-secondary {
 //     background: $warn;
 // }
+
+
+.mat-form-field {
+    width: 100%;
+    &.is-invalid{
+        .mat-form-field-flex{
+            background: rgba(255, 0, 0, 0.2);   
+        }
+    }
+}
