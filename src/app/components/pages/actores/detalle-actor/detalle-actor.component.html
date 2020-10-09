@@ -33,8 +33,8 @@
                 <input matInput [(ngModel)]="actor.pais" [value]="actor.pais" disabled>
             </mat-form-field>
 
-            <!-- <button mat-raised-button (click)="onDelete()"> <i class="fas fa-chevron-left"></i>Borrar</button>
-            <button mat-raised-button color="primary" (click)="onUpdate()"> <i class="fas fa-chevron-left"></i>Actualizar</button> -->
+            <button mat-raised-button (click)="onDelete()"> <i class="fas fa-chevron-left"></i>Borrar</button>
+            <button mat-raised-button color="primary" (click)="onUpdate()"> <i class="fas fa-chevron-left"></i>Actualizar</button>
         </div>
         <div class="col-md-4">
             <p1-table [objList]="paises" (selection)="onPaisSelection($event)"></p1-table>

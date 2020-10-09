@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { eCollections } from '../../../../models/firebase.model';
 import { Actor } from '../../../../models/models';
@@ -11,6 +12,7 @@ import { FbStorageService } from '../../../../services/fb-storage.service';
 })
 export class DetalleActorComponent implements OnInit {
     @Input() actor: Actor
+    @Output() someChange: EventEmitter<any> = new EventEmitter<any>();
     constructor(private fbstorageservice: FbStorageService, private router: Router) { }
 
 
@@ -23,21 +25,24 @@ export class DetalleActorComponent implements OnInit {
     paises: any[]
     pais: string
     ngOnInit(): void {
-        this.getPaises() 
+        this.getPaises()
     }
-    
+
     public getPaises() {
         this.fbstorageservice.get('https://restcountries.eu/rest/v2/region/americas').then(
             (paisesCompleto: any[]) => {
-                console.log("paisesCompleto",paisesCompleto)
+                console.log("paisesCompleto", paisesCompleto)
                 this.paises = paisesCompleto.map(pais => {
                     return { flag: pais.flag, name: pais.name }
                 })
-                console.log("paises F",this.paises)
+                console.log("paises F", this.paises)
             }
         )
     }
-    
+
+    public onPaisSelection(paisObj: any) {
+        this.actor.pais = paisObj.name;
+    }
     private validateNewActor(): boolean {
         if (this.actor.nombre == '' || this.actor.nombre == undefined) {
             this.invalidnombre = true
@@ -55,20 +60,23 @@ export class DetalleActorComponent implements OnInit {
             this.invalidfecha_de_nacimiento = true
             return false
         }
-        if (this.actor.foto == '' || this.actor.foto == undefined) {
-            this.invalidfoto = true
-            return false
-        }
+        // if (this.actor.foto == '' || this.actor.foto == undefined) {
+        //     this.invalidfoto = true
+        //     return false
+        // }
         return true
     }
 
-    
-    onDelete(id) {
-        this.fbstorageservice.delete(eCollections.actores,id)
-    }
-    onUpdate(id) {
-        this.fbstorageservice.createFromUserId(eCollections.actores,id,this.actor)
 
+    onDelete() {
+        this.fbstorageservice.delete(eCollections.actores, this.actor.id)
+        this.someChange.emit(true)
+    }
+    onUpdate() {
+        if (this.validateNewActor()) {
+            this.fbstorageservice.createFromUserId(eCollections.actores, this.actor.id, this.actor)
+            this.someChange.emit(true)
+        }
     }
 
 }

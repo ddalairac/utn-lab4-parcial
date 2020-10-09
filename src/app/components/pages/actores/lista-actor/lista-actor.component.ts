@@ -35,5 +35,7 @@ export class ListaActorComponent implements OnInit {
     public onNew(){
         this.router.navigateByUrl('/actor/alta');
     }
-
+    onDetailChange(){
+        this.getActores()
+    }
 }

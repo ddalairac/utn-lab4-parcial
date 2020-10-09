@@ -54,7 +54,11 @@ export class FbStorageService {
             this.firestore.collection(collection).get().subscribe(
                 querySnapshot => {
                     querySnapshot.forEach(doc => {
-                        list.push(doc.data());
+                        // list.push(doc.data());
+                        list.push({
+                            id: doc.id,
+                            ...doc.data()
+                        });
                     })
                     // console.log("Listado:", list);
                     this.loader.hide();

@@ -1,5 +1,5 @@
 export class Pelicula {
-    id?: number;
+    id?: string;
     nombre: string;
     tipo: eTipoPel;
     fecha_de_estreno: string;
@@ -8,7 +8,7 @@ export class Pelicula {
     actor?: string;
 }
 export class Actor {
-    id?: number;
+    id?: string;
     nombre: string;
     apellido: string;
     sexo: string;
