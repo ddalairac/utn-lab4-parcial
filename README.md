@@ -1,7 +1,7 @@
 # UTN Tecnicatura en Programación
 
-## Materia Laboratorio 4
-### Parcial 1
+## Materia Laboratorio 4 - Parcial 1
+
 <br>
 
 #### DdalairacParcial
